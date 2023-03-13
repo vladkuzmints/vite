@@ -1,0 +1,26 @@
+{{#> component
+    title="Accordion"
+    description="Accordion component"
+}}
+    {{> html/_partials/components/accordion }}
+{{/component}}
+
+
+{{#> options}}
+    <h3>data-collapse="{value}"</h3>
+    <p>
+        <i>Default: null</i>
+        <br>
+        <i>Options: true</i>
+    </p>
+    <p>Allows only one item to be opened at once</p>
+    <h3>data-active="{value}"</h3>
+    <p>
+        <i>Default: null</i>
+        <br>
+        <i>Options: Number | "all"</i>
+    </p>
+    <p>Allows to set active item on initial load:</p>
+    <p><code>data-active="0"</code> - index of item</p>
+    <p><code>data-active="all"</code> - all items open on load</p>
+{{/options}}

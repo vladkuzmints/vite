@@ -1,0 +1,13 @@
+<main class="ds-main">
+    <h1>Homepage 10</h1>
+    {{#each pages}}
+    <div>
+        <h2>{{ @key }}</h2>
+        <ul>
+            {{#each this}}
+                <a href="{{ this.url }}" title="{{ this.title }}">{{ this.title }}</a>
+            {{/each}}
+        </ul>
+    </div>
+    {{/each}}
+</main>

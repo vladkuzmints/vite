@@ -1,5 +1,6 @@
 @import "components/footer";
 @import "components/component";
+@import "components/navigation";
 
 .ds-body {
     --ds-bg-color: #f6f6f7;
@@ -15,18 +16,6 @@
     #app {
         margin-left: 250px;
     }
-}
-
-#ds-app {
-    width: 250px;   
-    color: var(--ds-font-color);
-    background: var(--ds-bg-color);
-    border-right: 1px solid var(--ds-border-color);
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 40px;
 }
 
 // Close button

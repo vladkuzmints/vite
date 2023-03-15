@@ -1,0 +1,62 @@
+#ds-app {
+    width: 250px;   
+    color: var(--ds-font-color);
+    background: var(--ds-bg-color);
+    border-right: 1px solid var(--ds-border-color);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 40px;
+
+    h4,
+    li {
+        text-transform: capitalize;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        margin: 0;
+    }
+
+    a {
+        color: var(--ds-font-color);
+        font-weight: 400;
+    }
+
+}
+
+.ds-nav-category {
+    position: relative;
+    &:first-of-type {
+        margin-top: 20px;
+    }
+    label {
+        font-weight: 700;
+        text-transform: capitalize;
+        cursor: pointer;
+        display: block;
+        padding: 5px 0;
+    }
+
+    ul {
+        position: relative;
+        display: none;
+        padding: 10px 0;
+        border-left: 1px solid var(--ds-border-color);
+    }
+
+    input {
+        opacity: 0;
+        position: absolute;
+    }
+
+    input:checked {
+        & + label {
+            & + ul {
+                display: block;
+            }
+        }
+    }
+}

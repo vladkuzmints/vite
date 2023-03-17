@@ -1,13 +1,14 @@
-<div class="ds-component">
-    <div class="ds-component-desc">
-        <h1>{{ title }}</h1>
-        <div class="ds-component-type">Type: <span>{{#if type}} {{type}} {{else}} Component {{/if}}</span></div>
-        <p>{{ description }}</p>
+{{#> layout}}
+    <div class="ds-component">
+        <div class="ds-component-desc">
+            <h1>{{ title }}</h1>
+            <div class="ds-component-type">Type: <span>{{#if type}} {{type}} {{else}} Component {{/if}}</span></div>
+            <p>{{ description }}</p>
+        </div>
+        
+        <!-- Component -->
+        <div id="ds-component" class="ds-component-box">
+            {{> @partial-block }}
+        </div>
     </div>
-    
-    <!-- Component -->
-    <div id="ds-component" class="ds-component-box">
-        {{> @partial-block }}
-    </div>
-    
-</div>
+{{/layout}}

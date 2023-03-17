@@ -16,18 +16,28 @@ export default defineConfig( async () => {
 
     const pages = await templates()
     const content = await getContent()
+    const inputsFiles = await inputs()
 
     return {
         server: {
             port: 3000,
+            watch: {
+                ignored: ['!**/node_modules/**/*'],
+            }
         },
-        root: './src/',
+        optimizeDeps: {
+        },
+        root: './src',
         build: {
-            outDir: '../dist/',
+            outDir: '../dist',
             emptyOutDir: true,
             rollupOptions: {
-                input: await inputs(),
-                output: {   
+                input: {
+                    app: '/js/main.ts',
+                    ds: '/design-system/js/index.ts',
+                    ...inputsFiles
+                },
+                output: {
                     assetFileNames: (assetInfo) => {
                         let extType = assetInfo.name.split('.')[1]
                         if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
@@ -37,12 +47,18 @@ export default defineConfig( async () => {
                         return `${project.output.assetsDir}/${extType}/[name]-[hash][extname]`
                     },
                     chunkFileNames: `${project.output.assetsDir}/js/[name]-[hash].js`,
-                    entryFileNames: `${project.output.assetsDir}/js/[name]-[hash].js`
+                    entryFileNames: (info) => {
+                        if (info.name === 'ds') {
+                            return `${project.output.assetsDir}/js/ds/[name]-[hash].js`
+                        } else {
+                            return `${project.output.assetsDir}/js/[name]-[hash].js`
+                        }
+                    }
                 }
             }
         },
         plugins: [
-            DesignSystemPlugin(),
+            // await DesignSystemPlugin(),
             handlebars({
                 helpers: {
                     json: (obj) => JSON.stringify(obj),
@@ -52,7 +68,9 @@ export default defineConfig( async () => {
                     content
                 },
                 partialDirectory: [
+                    resolve(__dirname, ''),
                     resolve(__dirname, 'src'),
+                    resolve(__dirname, 'src/html/_partials/master'),
                     resolve(__dirname, 'src/design-system/helpers')
                 ]
             }),
@@ -63,7 +81,7 @@ export default defineConfig( async () => {
                 ]
             }),
             FullReload([
-                '**/design-system/**/*.html',
+                'design-system/**/*',
                 '**/_partials/**/*.html'
             ])
         ],

@@ -1,2 +1,18 @@
 .accordion {
+
+    &__item {
+        position: relative;
+        border-bottom: 1px solid red;
+    }
+
+    label {
+
+    }
+
+    &__content {
+        display: none;
+        *:checked + * + & {
+            display: block;
+        }
+    }
 }

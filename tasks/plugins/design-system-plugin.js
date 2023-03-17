@@ -5,7 +5,7 @@ const DesignSystemPlugin = () => {
       name: 'design-system-plugin',
       transformIndexHtml: {
         enforce: 'pre',
-        transform(html) {
+        transform(html, ctx) {
           let markup = `{{> html/_partials/master/_head }}${html}{{> html/_partials/master/_script }}${project.story ? '{{> design-system/core}}' : '' }{{> html/_partials/master/_foot }}`
           return html = markup
         }

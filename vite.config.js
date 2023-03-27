@@ -8,7 +8,6 @@ import { inputs, templates, getContent } from './tasks/templates.js';
 // Plugins
 import handlebars from 'vite-plugin-handlebars';
 import FullReload from 'vite-plugin-full-reload'
-import DesignSystemPlugin from './tasks/plugins/design-system-plugin';
 import copy from 'rollup-plugin-copy'
 
 
@@ -76,6 +75,8 @@ export default defineConfig( async () => {
                     }
                 },
                 context: {
+                    // If design system is set in config
+                    designSystem: project.designSystem ? true : false,
                     pages,
                     content
                 },

@@ -10,6 +10,9 @@
             {{> @partial-block}}
         </div>
         <script type="module" src="../../js/main.ts"></script>
-        {{> design-system/core }}
+
+        {{#if designSystem }}
+            {{> design-system/core }}
+        {{/if}}
     </body>
 </html>

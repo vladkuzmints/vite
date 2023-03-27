@@ -1,5 +1,7 @@
 export default ({
-    story: true,
+    designSystem: {
+        dir: 'desing-system'
+    },
     input: {
         
     },

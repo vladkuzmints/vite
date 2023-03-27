@@ -15,7 +15,7 @@ el!.innerHTML = navigation(data)
 // Gets component's code
 const components: NodeListOf<HTMLElement> = document.querySelectorAll('.ds-component-box')
 components.forEach((component: HTMLElement) => {
-    const datestamp = new Date().getTime()
+    const datestamp = Math.floor(Math.pow(10, 9) + Math.random() * 9 * Math.pow(10, 9))
     component.insertAdjacentHTML('afterend', `
         <div class="ds-component-code">
             <input type="checkbox" id="${datestamp}"/>

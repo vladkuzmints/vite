@@ -39,3 +39,19 @@
         transform: translate(-50%, -50%);
     }
 }
+
+.ds-main {
+    h2 {
+        text-transform: capitalize;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        text-transform: capitalize;
+    }
+}

@@ -1,6 +1,7 @@
 {{#> layout}}
 
     {{#> component
+        type="Component"
         title="Accordion"
         description="Accordion component"
     }}
@@ -8,6 +9,7 @@
     {{/component}}
 
     {{#> options}}
+        <h2>Options</h2>
         <h3>data-collapse="{value}"</h3>
         <p>
             <i>Default: null</i>
@@ -25,5 +27,14 @@
         <p><code>data-active="0"</code> - index of item</p>
         <p><code>data-active="all"</code> - all items open on load</p>
     {{/options}}
+
+    {{#> component
+        subtitle="Accordion: data-active"
+    }}
+        {{> html/_partials/components/accordion
+            active="1"
+            collapse="true"
+        }}
+    {{/component}}
 
 {{/layout}}

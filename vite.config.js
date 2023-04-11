@@ -11,20 +11,23 @@ import FullReload from 'vite-plugin-full-reload'
 import copy from 'rollup-plugin-copy'
 
 
-export default defineConfig( async () => {
+export default defineConfig( async ({ mode }) => {
+
+
+    // if (mode === 'development') {
+        
+    // }
 
     const pages = await templates()
     const content = await getContent()
     const inputsFiles = await inputs()
 
-    return {
+    const configs = {
         server: {
             port: 3000,
             watch: {
                 ignored: ['!**/node_modules/**/*'],
             }
-        },
-        optimizeDeps: {
         },
         root: './src',
         build: {
@@ -45,7 +48,7 @@ export default defineConfig( async () => {
                         }
                         return `${project.output.assetsDir}/${extType}/[name]-[hash][extname]`
                     },
-                    chunkFileNames: `${project.output.assetsDir}/js/[name]-[hash].js`,
+                    chunkFileNames: `${project.output.assetsDir}/js/chunks/[name]-[hash].js`,
                     entryFileNames: (info) => {
                         if (info.name === 'ds') {
                             return `${project.output.assetsDir}/js/ds/[name]-[hash].js`
@@ -96,7 +99,14 @@ export default defineConfig( async () => {
             FullReload([
                 'design-system/**/*',
                 '**/_partials/**/*.html'
-            ])
+            ]),
         ],
+        resolve: {
+            alias: {
+              '@': resolve(__dirname, './src')
+            }
+        }
     }
+
+    return configs
 })

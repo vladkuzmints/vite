@@ -1,6 +1,11 @@
 <div class="container">  
 
-    <div data-module="Accordion" class="accordion">
+    <div 
+        data-module="Accordion" 
+        class="accordion"
+        {{#if active}} data-active="{{active}}" {{/if}}
+        {{#if collapse}} data-collapse="{{collapse}}" {{/if}}
+    >
         <div class="accordion__item">
             <input type="checkbox" id="checkbox_1" name="checkbox">
             <label for="checkbox_1">Label</label>

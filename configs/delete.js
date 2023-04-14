@@ -14,10 +14,22 @@ if (TYPE === 'block' || TYPE === 'component') {
         } else {
             fs.unlink(`./src/html/${TYPE}s/${NAME}.html`,(err) => {
                 if (err) console.log(chalk.red('Failed'));
-                console.log(chalk.green('HTML File is deleted successfully.'))
+                console.log(chalk.green(`HTML File ${NAME}.html is deleted successfully.`))
             })
         }
     })
+
+    fs.access(`./src/html/_partials/${TYPE}s/${NAME}.html`, (err) => {
+        if (err) {
+            console.log(chalk.yellow(`File doesn't exist`))
+        } else {
+            fs.unlink(`./src/html/_partials/${TYPE}s/${NAME}.html`,(err) => {
+                if (err) console.log(chalk.red('Failed'));
+                console.log(chalk.green(`HTML File ${NAME}.html is deleted successfully.`))
+            })
+        }
+    })
+
     // SCSS
     fs.access(`./src/scss/${TYPE}s/_${NAME}.scss`, (err) => {
         if (err) {
@@ -25,7 +37,7 @@ if (TYPE === 'block' || TYPE === 'component') {
         } else {
             fs.unlink(`./src/scss/${TYPE}s/_${NAME}.scss`, (err) => {
                 if (err) console.log(chalk.red('Failed'));
-                console.log(chalk.green('SCSS File is deleted successfully.'))
+                console.log(chalk.green(`File ${NAME}.scss is deleted successfully.`))
             })
         }
     })

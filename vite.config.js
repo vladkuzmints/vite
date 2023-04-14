@@ -22,38 +22,45 @@ export default defineConfig( async ({ mode }) => {
     const content = await getContent()
     const inputsFiles = await inputs()
 
+    // Entry points
+    const entryPoints = {
+        app: project.entryPoint,
+        ...inputsFiles
+    }
+
+    if (project.designSystem?.entryPoint) {
+        entryPoints['design-system'] = project.designSystem.entryPoint
+    }
+    // END: entry points
+
     const configs = {
         server: {
             port: 3000,
             watch: {
-                ignored: ['!**/node_modules/**/*'],
+                ignored: project.ignoreWatch,
             }
         },
-        root: './src',
+        root: project.root,
         build: {
-            outDir: '../dist',
+            outDir: project.outDir,
             emptyOutDir: true,
             rollupOptions: {
-                input: {
-                    app: '/js/main.ts',
-                    ds: '/design-system/js/index.ts',
-                    ...inputsFiles
-                },
+                input: entryPoints,
                 output: {
                     assetFileNames: (assetInfo) => {
                         let extType = assetInfo.name.split('.')[1]
                         if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
                             extType = 'img'
-                            return `${project.output.assetsDir}/${extType}/[name][extname]`
+                            return `${project.assetsDir}/${extType}/[name][extname]`
                         }
-                        return `${project.output.assetsDir}/${extType}/[name]-[hash][extname]`
+                        return `${project.assetsDir}/${extType}/[name]-[hash][extname]`
                     },
-                    chunkFileNames: `${project.output.assetsDir}/js/chunks/[name]-[hash].js`,
+                    chunkFileNames: `${project.assetsDir}/js/chunks/[name]-[hash].js`,
                     entryFileNames: (info) => {
-                        if (info.name === 'ds') {
-                            return `${project.output.assetsDir}/js/ds/[name]-[hash].js`
+                        if (info.name === 'design-system') {
+                            return `${project.assetsDir}/js/design-system/[name]-[hash].js`
                         } else {
-                            return `${project.output.assetsDir}/js/[name]-[hash].js`
+                            return `${project.assetsDir}/js/[name]-[hash].js`
                         }
                     }
                 }

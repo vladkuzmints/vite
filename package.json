@@ -7,10 +7,13 @@
     "start": "node configs/dev-server.js",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "create": "node configs/create",
+    "delete": "node configs/delete"
   },
   "devDependencies": {
     "@rollup/plugin-dynamic-import-vars": "^2.0.3",
+    "chalk": "^5.2.0",
     "child_process": "^1.0.2",
     "chokidar": "^3.5.3",
     "glob": "^9.2.1",

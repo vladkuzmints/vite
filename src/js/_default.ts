@@ -1,9 +1,9 @@
 // Dynamically imported components
 // This is a common function to import scripts dynamically based on data attrubite
-// Example: <div data-module="{{ A component name that matches the component file name from js/Components folder }}">
+// Example: <div data-component="{{ A component name that matches the component file name from js/Components folder }}">
 
 export const components: NodeListOf<HTMLElement> =
-  document.querySelectorAll('[data-module]');
+  document.querySelectorAll('[data-component]');
 
 for (let i = 0; i < components.length; i++) {
   const el = components[i];

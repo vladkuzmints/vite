@@ -42,5 +42,15 @@ export const inputs = async () => {
 }
 
 export const getContent = () => {
-    return {hello: 'hello'}
+    const root = './src/data'
+    let output = {}
+    const files = fs.readdirSync(root)
+        .filter(file => path.extname(file) === '.json')
+    
+    files.forEach((filename) => {
+        const contents = JSON.parse(fs.readFileSync(root + '/' + filename, 'utf8'));
+        Object.assign(output, contents)
+    });
+
+    return output
 }

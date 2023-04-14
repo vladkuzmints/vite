@@ -88,7 +88,7 @@ export default defineConfig( async ({ mode }) => {
                     // If design system is set in config
                     designSystem: project.designSystem ? true : false,
                     pages,
-                    content
+                    ...content
                 },
                 partialDirectory: [
                     resolve(__dirname, ''),

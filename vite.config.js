@@ -99,13 +99,13 @@ export default defineConfig( async ({ mode }) => {
             }),
             copy({
                 targets: [
-                    // TODO: implement with umbraco
+                    // TODO: implement with optimizely
                 //   { src: 'dist/static/', dest: 'wwwroot/' }
                 ]
             }),
             FullReload([
                 'design-system/**/*',
-                '**/_partials/**/*.html'
+                '**/_partials/**/*.html',
             ]),
         ],
         resolve: {

@@ -1,6 +1,6 @@
 export default {
-    plugins: {
-        'autoprefixer': {},
-        'postcss-sort-media-queries': {}
-    }
-}
+  plugins: {
+    autoprefixer: {},
+    "postcss-sort-media-queries": {},
+  },
+};

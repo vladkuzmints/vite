@@ -1,24 +1,22 @@
 .accordion {
-
-    input {
-        opacity: 0;
-        position: absolute;
-        &:focus-visible {
-            & + label {
-                font-weight: bold;
-            } 
-        }
+  input {
+    opacity: 0;
+    position: absolute;
+    &:focus-visible {
+      & + label {
+        font-weight: bold;
+      }
     }
+  }
 
-    &__item {
-        position: relative;
+  &__item {
+    position: relative;
+  }
+
+  &__content {
+    display: none;
+    *:checked + * + & {
+      display: block;
     }
-
-
-    &__content {
-        display: none;
-        *:checked + * + & {
-            display: block;
-        }
-    }
+  }
 }

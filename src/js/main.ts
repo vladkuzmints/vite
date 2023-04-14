@@ -1,2 +1,2 @@
-import '@/scss/style.scss'
-import '@/js/_default.ts'
+import "@scss/style.scss";
+import "@script/_default.ts";

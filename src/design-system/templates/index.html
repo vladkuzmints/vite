@@ -1,18 +1,18 @@
 <main class="ds-main">
-    <div class="container">
-        <h1>Welcome</h1>
-        <p>Below you can find the main website components</p>
-        {{#each pages}}
-        <div>
-            <h2>{{ @key }}</h2>
-            <ul>
-                {{#each this}}
-                    <li>
-                        <a href="{{ this.url }}" title="{{ this.title }}">{{ this.title }}</a>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
+  <div class="container">
+    <h1>Welcome</h1>
+    <p>Below you can find the main website components</p>
+    {{#each pages}}
+    <div>
+      <h2>{{ @key }}</h2>
+      <ul>
+        {{#each this}}
+        <li>
+          <a href="{{ this.url }}" title="{{ this.title }}">{{ this.title }}</a>
+        </li>
         {{/each}}
+      </ul>
     </div>
+    {{/each}}
+  </div>
 </main>

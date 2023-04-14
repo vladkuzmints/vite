@@ -13,11 +13,13 @@
   },
   "devDependencies": {
     "@rollup/plugin-dynamic-import-vars": "^2.0.3",
+    "autoprefixer": "^10.4.14",
     "chalk": "^5.2.0",
     "child_process": "^1.0.2",
     "chokidar": "^3.5.3",
     "glob": "^9.2.1",
     "highlight.js": "^11.7.0",
+    "postcss-sort-media-queries": "^4.3.0",
     "rollup-plugin-copy": "^3.4.0",
     "sass": "^1.58.3",
     "typescript": "^4.9.3",

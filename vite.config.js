@@ -110,7 +110,7 @@ export default defineConfig( async ({ mode }) => {
         ],
         resolve: {
             alias: {
-              '@': resolve(__dirname, './src')
+              '@': resolve(__dirname, project.root)
             }
         }
     }

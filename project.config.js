@@ -4,7 +4,8 @@ export default {
   ignoreWatch: ["!**/node_modules/**/*"],
   entryPoint: "./src/js/main.ts",
   assetsDir: "static",
+  copyDir: "wwwroot",
   designSystem: {
     entryPoint: "/design-system/js/index.ts",
-  },
+  }
 };

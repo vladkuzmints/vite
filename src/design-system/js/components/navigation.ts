@@ -1,4 +1,4 @@
-export const navigation = (content) => {
+export const navigation = (content: object) => {
   return `
         <a href="/">Homepage</a>
         ${Object.keys(content)

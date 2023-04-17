@@ -1,9 +1,11 @@
 import "../scss/styles.scss";
 
-import hl from 'highlight.js'
-import 'highlight.js/styles/github.css';
+// TODO: Implement highlight library
+// import hl from 'highlight.js'
+// Theme link: https://github.com/highlightjs/highlight.js/tree/55f68f72be2cb69d14561353ad851d6b2242dfcc/src/styles
+// import 'highlight.js/styles/atom-one-dark-reasonable.css'
 
-//
+
 import { navigation } from "./components/navigation";
 import { htmlToString } from "./helpers/html-to-string";
 
@@ -38,5 +40,11 @@ components.forEach((component: HTMLElement) => {
         </div>
     `
   );
-  hl.highlightElement(component.parentNode.querySelector('pre'))
+
+  // TODO: Highlight library
+  // const parent = component.parentNode as HTMLElement
+  // if (parent) {
+  //   hl.highlightElement(parent.querySelector('pre') as HTMLElement)
+  // }
+
 });

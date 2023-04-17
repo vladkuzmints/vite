@@ -2,19 +2,16 @@ import { defineConfig } from "vite";
 import project from "./project.config.js";
 import { resolve } from "path";
 import eslintPlugin from "vite-plugin-eslint";
+import handlebars from "vite-plugin-handlebars";
+
+// Configs
+import Production from './configs/vite.production.js'
+import Development from './configs/vite.development.js'
 
 // Tasks
 import { inputs, templates, getContent } from "./configs/tasks/templates.js";
 
-// Plugins
-import handlebars from "vite-plugin-handlebars";
-import FullReload from "vite-plugin-full-reload";
-import copy from "rollup-plugin-copy";
-
 export default defineConfig(async ({ mode }) => {
-  // if (mode === 'development') {
-
-  // }
 
   const pages = await templates();
   const content = await getContent();
@@ -30,6 +27,36 @@ export default defineConfig(async ({ mode }) => {
     entryPoints["design-system"] = project.designSystem.entryPoint;
   }
   // END: entry points
+
+
+  // Plugins:
+  let plugins = [
+    eslintPlugin(),
+    handlebars({
+      helpers: {
+        json: (obj) => JSON.stringify(obj)
+      },
+      context: {
+        // If design system is set in config
+        designSystem: project.designSystem ? true : false,
+        pages,
+        ...content,
+      },
+      partialDirectory: [
+        resolve(__dirname, "src"),
+        resolve(__dirname, "src/html/_partials"),
+        resolve(__dirname, "src/html/_partials/master"),
+        resolve(__dirname, "src/design-system/helpers"),
+      ],
+    })
+  ]
+
+  if (mode === 'production') {
+    plugins = [...plugins, ...Production.plugins]
+  } else {
+    plugins = [...plugins, ...Development.plugins]
+  }
+  // END: plugins
 
   const configs = {
     server: {
@@ -56,7 +83,7 @@ export default defineConfig(async ({ mode }) => {
           chunkFileNames: `${project.assetsDir}/js/chunks/[name]-[hash].js`,
           entryFileNames: (info) => {
             if (info.name === "design-system") {
-              return `${project.assetsDir}/js/design-system/[name]-[hash].js`;
+              return `design-system/[name]-[hash].js`;
             } else {
               return `${project.assetsDir}/js/[name]-[hash].js`;
             }
@@ -64,45 +91,7 @@ export default defineConfig(async ({ mode }) => {
         },
       },
     },
-    plugins: [
-      eslintPlugin(),
-      handlebars({
-        helpers: {
-          json: (obj) => JSON.stringify(obj),
-          block: function (name) {
-            var blocks = this._blocks,
-              content = blocks && blocks[name];
-
-            return content ? content.join("\n") : null;
-          },
-          contentFor: function (name, options) {
-            var blocks = this._blocks || (this._blocks = {}),
-              block = blocks[name] || (blocks[name] = []);
-
-            block.push(options.fn(this));
-          },
-        },
-        context: {
-          // If design system is set in config
-          designSystem: project.designSystem ? true : false,
-          pages,
-          ...content,
-        },
-        partialDirectory: [
-          resolve(__dirname, ""),
-          resolve(__dirname, "src"),
-          resolve(__dirname, "src/html/_partials/master"),
-          resolve(__dirname, "src/design-system/helpers"),
-        ],
-      }),
-      copy({
-        targets: [
-          // TODO: implement with optimizely
-          //   { src: 'dist/static/', dest: 'wwwroot/' }
-        ],
-      }),
-      FullReload(["design-system/**/*", "**/_partials/**/*.html"]),
-    ],
+    plugins,
     resolve: {
       alias: {
         "@scss": resolve(__dirname, `${project.root}/scss`),

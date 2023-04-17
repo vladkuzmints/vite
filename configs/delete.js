@@ -7,11 +7,11 @@ const NAME = args[1];
 
 if (TYPE === "block" || TYPE === "component") {
   // HTML
-  fs.access(`./src/html/${TYPE}s/${NAME}.html`, (err) => {
+  fs.access(`./src/pages/${TYPE}s/${NAME}.html`, (err) => {
     if (err) {
       console.log(chalk.yellow(`File doesn't exist`));
     } else {
-      fs.unlink(`./src/html/${TYPE}s/${NAME}.html`, (err) => {
+      fs.unlink(`./src/pages/${TYPE}s/${NAME}.html`, (err) => {
         if (err) console.log(chalk.red("Failed"));
         console.log(
           chalk.green(`HTML File ${NAME}.html is deleted successfully.`)
@@ -20,11 +20,11 @@ if (TYPE === "block" || TYPE === "component") {
     }
   });
 
-  fs.access(`./src/html/_partials/${TYPE}s/${NAME}.html`, (err) => {
+  fs.access(`./src/pages/_partials/${TYPE}s/${NAME}.html`, (err) => {
     if (err) {
       console.log(chalk.yellow(`File doesn't exist`));
     } else {
-      fs.unlink(`./src/html/_partials/${TYPE}s/${NAME}.html`, (err) => {
+      fs.unlink(`./src/pages/_partials/${TYPE}s/${NAME}.html`, (err) => {
         if (err) console.log(chalk.red("Failed"));
         console.log(
           chalk.green(`HTML File ${NAME}.html is deleted successfully.`)

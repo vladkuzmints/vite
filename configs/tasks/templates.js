@@ -5,17 +5,17 @@ import fs from "fs";
 const templatesList = () => {
   const pages = {};
   const folders = fs
-    .readdirSync("src/html")
+    .readdirSync("src/pages")
     .filter(
       (folder) => path.extname(folder) == "" && folder.indexOf("_") !== 0
     );
   folders.map((folder) => {
     pages[folder] = [];
-    fs.readdirSync(`src/html/${folder}`).map((file) => {
+    fs.readdirSync(`src/pages/${folder}`).map((file) => {
       const name = file.replace(/-/g, " ").split(".")[0];
 
       pages[folder].push({
-        url: `/html/${folder}/${file}`,
+        url: `/pages/${folder}/${file}`,
         title: name,
       });
     });

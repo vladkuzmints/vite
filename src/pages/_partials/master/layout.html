@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What??</title>
+    <title>{{ title }}</title>
   </head>
   <body>
     <div id="app">{{> @partial-block}}</div>
+    <script type="module" src="/static/js/main.ts"></script>
+
+    {{#if designSystem }} {{> design-system/core }} {{/if}}
   </body>
 </html>

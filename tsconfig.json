@@ -16,8 +16,8 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@scss/*": ["scss/*"],
-      "@script/*": ["js/*"]
+      "@scss/*": ["static/scss/*"],
+      "@script/*": ["static/js/*"]
     }
   },
   "include": ["src", "js"]

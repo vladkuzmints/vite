@@ -3,6 +3,7 @@ import project from "./project.config.js";
 import { resolve } from "path";
 import eslintPlugin from "vite-plugin-eslint";
 import handlebars from "vite-plugin-handlebars";
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // Configs
 import Production from './configs/vite.production.js'
@@ -44,11 +45,15 @@ export default defineConfig(async ({ mode }) => {
       },
       partialDirectory: [
         resolve(__dirname, "src"),
-        resolve(__dirname, "src/html/_partials"),
-        resolve(__dirname, "src/html/_partials/master"),
+        resolve(__dirname, "src/pages/_partials"),
+        resolve(__dirname, "src/pages/_partials/master"),
         resolve(__dirname, "src/design-system/helpers"),
       ],
-    })
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [resolve(__dirname, 'src/img/icons')],
+      symbolId: '[name]'
+    }),
   ]
 
   if (mode === 'production') {
@@ -94,8 +99,8 @@ export default defineConfig(async ({ mode }) => {
     plugins,
     resolve: {
       alias: {
-        "@scss": resolve(__dirname, `${project.root}/scss`),
-        "@script": resolve(__dirname, `${project.root}/js`),
+        "@scss": resolve(__dirname, `${project.root}/static/scss`),
+        "@script": resolve(__dirname, `${project.root}/static/js`),
       },
     },
   };

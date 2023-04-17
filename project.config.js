@@ -2,7 +2,7 @@ export default {
   root: "./src",
   outDir: "../dist",
   ignoreWatch: ["!**/node_modules/**/*"],
-  entryPoint: "./src/js/main.ts",
+  entryPoint: "./src/static/js/main.ts",
   assetsDir: "static",
   copyDir: "wwwroot",
   designSystem: {

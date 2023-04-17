@@ -8,10 +8,10 @@ const NAMES = process.argv.slice(3);
 if (TYPE === "block" || TYPE === "component") {
   NAMES.forEach((NAME) => {
     // HTML
-    fs.access(`./src/html/${TYPE}s/${NAME}.html`, (err) => {
+    fs.access(`./src/pages/${TYPE}s/${NAME}.html`, (err) => {
       if (err) {
         fs.writeFile(
-          `./src/html/${TYPE}s/${NAME}.html`,
+          `./src/pages/${TYPE}s/${NAME}.html`,
           `{{#> layout}}{{/layout}}`,
           (err) => {
             if (err) console.log(chalk.red("Failed"));
@@ -25,10 +25,10 @@ if (TYPE === "block" || TYPE === "component") {
       }
     });
 
-    fs.access(`./src/html/_partials/${TYPE}s/${NAME}.html`, (err) => {
+    fs.access(`./src/pages/_partials/${TYPE}s/${NAME}.html`, (err) => {
       if (err) {
         fs.writeFile(
-          `./src/html/_partials/${TYPE}s/${NAME}.html`,
+          `./src/pages/_partials/${TYPE}s/${NAME}.html`,
           `<!-- ${TYPE.toUpperCase()}: ${NAME} -->`,
           (err) => {
             if (err) console.log(chalk.red("Failed"));

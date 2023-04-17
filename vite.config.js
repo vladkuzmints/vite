@@ -92,6 +92,14 @@ export default defineConfig(async ({ mode }) => {
       },
     },
     plugins,
+    css: {
+      devSourcemap: true,
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@scss/globals.scss";`
+        }
+      }
+    },
     resolve: {
       alias: {
         "@scss": resolve(__dirname, `${project.root}/static/scss`),

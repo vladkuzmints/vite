@@ -1,0 +1,13 @@
+// Breakpoints
+@mixin breakpoint($breakpoint, $dir: min) {
+    
+    $px: map-get($breakpoints, $breakpoint);
+    
+    @if $dir == max {
+        $px: $px - 1
+    }
+
+    @media (#{$dir}-width: $px){
+        @content;
+    }
+}

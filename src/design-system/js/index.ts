@@ -9,16 +9,28 @@ import "../scss/styles.scss";
 import { navigation } from "./components/navigation";
 import { htmlToString } from "./helpers/html-to-string";
 
+const BREAKPOINT = 768
+let isMobile = window.innerWidth < BREAKPOINT
+
 const body = document.querySelector<HTMLElement>("body");
 const el = document.querySelector<HTMLElement>("#ds-app");
+
+let isFullWidth = sessionStorage.getItem('dsIsFullWidth') === 'true' ? true : false
+
 if (body) {
-  body.className = "ds-body";
+  body.className = `ds-body ${isFullWidth ? 'is-aside-hidden' : ''}`;
 }
 
 // data-context
 const data = JSON.parse(`${el?.dataset.context}`);
 if (el) {
   el.innerHTML = navigation(data);
+  const close = el.querySelector<HTMLElement>('.ds-close')
+  close.addEventListener('click', () => {
+    isFullWidth = !isFullWidth
+    body.classList[isFullWidth ? 'add' : 'remove']('is-aside-hidden')
+    sessionStorage.setItem("dsIsFullWidth", `${isFullWidth}`);
+  })
 }
 
 // Gets component's code
@@ -48,3 +60,14 @@ components.forEach((component: HTMLElement) => {
   // }
 
 });
+
+// Resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth < BREAKPOINT && !isMobile) {
+    body.classList.add('is-aside-hidden')
+    isMobile = true
+  } else if (window.innerWidth >= BREAKPOINT && isMobile) {
+    body.classList.remove('is-aside-hidden')
+    isMobile = false
+  }
+})

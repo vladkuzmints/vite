@@ -2,7 +2,7 @@ import path from "path";
 import glob from "glob";
 import fs from "fs";
 
-const templatesList = () => {
+export const templatesList = async () => {
   const pages = {};
   const folders = fs
     .readdirSync("src/pages")
@@ -23,8 +23,6 @@ const templatesList = () => {
 
   return pages;
 };
-
-export const templates = async () => await templatesList();
 
 export const inputs = async () => {
   const files = await glob("**/*.html", {

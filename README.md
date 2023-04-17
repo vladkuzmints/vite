@@ -1,5 +1,7 @@
 # TODO: add instrcutions
 
-# TODO:
+## SVG icons
 
-1) Icon strites
+To generate SVG sprite symbols, please run:
+
+'npm run svg'

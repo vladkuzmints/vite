@@ -9,11 +9,11 @@ import Production from './configs/vite.production.js'
 import Development from './configs/vite.development.js'
 
 // Tasks
-import { inputs, templates, getContent } from "./configs/tasks/templates.js";
+import { inputs, templatesList, getContent } from "./configs/tasks/templates.js";
 
 export default defineConfig(async ({ mode }) => {
 
-  const pages = await templates();
+  const pages = await templatesList();
   const content = await getContent();
   const inputsFiles = await inputs();
 

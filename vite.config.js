@@ -3,7 +3,6 @@ import project from "./project.config.js";
 import { resolve } from "path";
 import eslintPlugin from "vite-plugin-eslint";
 import handlebars from "vite-plugin-handlebars";
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // Configs
 import Production from './configs/vite.production.js'
@@ -49,11 +48,7 @@ export default defineConfig(async ({ mode }) => {
         resolve(__dirname, "src/pages/_partials/master"),
         resolve(__dirname, "src/design-system/helpers"),
       ],
-    }),
-    createSvgIconsPlugin({
-      iconDirs: [resolve(__dirname, 'src/img/icons')],
-      symbolId: '[name]'
-    }),
+    })
   ]
 
   if (mode === 'production') {

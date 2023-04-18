@@ -1,0 +1,12 @@
+{
+    "accordion": [
+        {
+            "title": "Accordion item 1",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti qui error incidunt. Fugiat autem totam expedita saepe fugit quos pariatur, ipsum, cumque qui quis modi iste delectus numquam! Aspernatur, dolorum!"
+        },
+        {
+            "title": "Accordion item 2",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti qui error incidunt. Fugiat autem totam expedita saepe fugit quos pariatur, ipsum, cumque qui quis modi iste delectus numquam! Aspernatur, dolorum!"
+        }
+    ]
+}

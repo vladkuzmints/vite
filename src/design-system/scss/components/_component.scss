@@ -1,16 +1,16 @@
 .ds-component-desc {
-  padding: 0 2rem;
+  padding: 0 20px;
   max-width: var(--ds-max-width);
   margin: 0 auto;
   & > * {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     &:last-child {
-      margin-bottom: 4rem;
+      margin-bottom: 40px;
     }
 
     &:first-child {
-      margin-top: 4rem;
+      margin-top: 40px;
     };
   }
 }
@@ -19,20 +19,20 @@
   span {
     display: inline-block;
     border-radius: 5px;
-    padding: 2px 10px;
+    padding: 0px 5px;
     background: var(--ds-bg-color);
-    font-size: 1.25rem;
+    font-size: 12px;
+    font-family: monospace;
   }
 }
 
 .ds-component-box {
   border: 1px dashed var(--ds-border-color);
-  border-right: none;
-  border-left: none;
+  transform: translate(0);
 }
 
 .ds-component-code {
-  padding: 2rem;
+  padding: 20px;
   position: relative;
   max-width: var(--ds-max-width);
   margin: 0 auto;
@@ -43,7 +43,8 @@
     background: black;
     overflow: auto;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 10px;
+    font-size: 14px;
   }
 
   input {
@@ -57,6 +58,8 @@
     padding: 8px 10px;
     border-radius: 4px;
     border: 1px solid var(--ds-border-color);
+    font-size: 14px;
+    color: rgba(black, .85);
     span {
       &:last-child {
         display: none;
@@ -82,15 +85,18 @@
 }
 
 .ds-component-options {
-  padding: 0 2rem;
+  padding: 0 20px;
   margin: 0 auto;
   max-width: var(--ds-max-width);
+  h2 {
+    font-size: 22px;
+  }
 
-  h3,
-  h4 {
+  h3 {
     position: relative;
-    margin-top: 2.5rem;
+    margin-top: 24px;
     color: var(--ds-title-color);
+    font-size: 16px;
   }
 
   code {
@@ -99,5 +105,7 @@
     border: 1px solid var(--ds-border-color);
     padding: 0 4px;
     border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
   }
 }

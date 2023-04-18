@@ -47,7 +47,7 @@ components.forEach((component: HTMLElement) => {
             <input type="checkbox" id="${datestamp}"/>
             <label for="${datestamp}"><span>Show</span><span>Hide</span> code</label> 
             <pre>
-                <code>${htmlToString(component?.innerHTML).trim()}</code>
+                <code>${htmlToString(component?.innerHTML.trim())}</code>
             </pre>
         </div>
     `

@@ -5,8 +5,10 @@
         title="Accordion"
         description="Accordion component" 
   }} 
-    {{> components/accordion }}
-  {{/component}} 
+    {{> components/accordion 
+        content=accordion
+    }}
+    {{/component}} 
   
   {{#> options}}
     <h2>Options</h2>
@@ -28,9 +30,9 @@
     <p><code>data-active="all"</code> - all items open on load</p>
   {{/options}} 
   
-  {{#> component
+    {{#> component
       subtitle="Accordion: data-active" }} 
-      {{> components/accordion active="1" collapse="true" }} 
+      {{> components/accordion active="1" collapse="true" content=accordion}} 
     {{/component}}
 
 {{/layout}}

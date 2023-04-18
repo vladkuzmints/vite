@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "node configs/tasks/clean",
     "svg": "svg-symbol-sprite -i ./src/static/img/icons/ -o ./src/static/img/sprite.svg -p \"\"",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run clean && tsc && vite build",
     "preview": "vite preview",
     "create": "node configs/create",
     "delete": "node configs/delete",
@@ -30,6 +31,7 @@
     "highlight.js": "^11.7.0",
     "postcss-sort-media-queries": "^4.3.0",
     "prettier": "^2.8.7",
+    "rimraf": "^5.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-svgsprite-generator": "^1.1.0",
     "sass": "^1.58.3",
@@ -39,7 +41,6 @@
     "vite": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-handlebars": "^1.6.0",
-    "vite-svg-sprite-wrapper": "^1.0.3"
+    "vite-plugin-handlebars": "^1.6.0"
   }
 }

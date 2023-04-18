@@ -34,7 +34,8 @@ export default defineConfig(async ({ mode }) => {
     eslintPlugin(),
     handlebars({
       helpers: {
-        json: (obj) => JSON.stringify(obj)
+        json: (obj) => JSON.stringify(obj),
+        isEqual: (exp1, exp2) => exp1 === exp2
       },
       context: {
         // If design system is set in config
@@ -65,9 +66,9 @@ export default defineConfig(async ({ mode }) => {
         ignored: project.ignoreWatch,
       },
     },
-    root: project.root,
+    root: `./${project.root}`,
     build: {
-      outDir: project.outDir,
+      outDir: `../${project.outDir}`,
       emptyOutDir: true,
       rollupOptions: {
         input: entryPoints,
